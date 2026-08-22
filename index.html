@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Lab</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:Arial,sans-serif;background:linear-gradient(135deg,#0b1020,#17133a 55%,#25105c);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px}
+.container{width:min(900px,100%)}
+header{text-align:center;margin-bottom:28px}
+.badge{display:inline-block;padding:7px 13px;border:1px solid #ffffff33;border-radius:999px;background:#ffffff0d;color:#bfc8ff;font-size:13px}
+h1{font-size:clamp(42px,8vw,76px);margin:15px 0 8px;letter-spacing:-3px}
+.subtitle{color:#aeb5d1;margin:0}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:#ffffff0c;border:1px solid #ffffff18;border-radius:22px;padding:22px;min-height:190px;backdrop-filter:blur(12px);transition:.2s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-5px);background:#ffffff14;border-color:#ffffff35}
+.icon{font-size:32px;margin-bottom:18px}.card h2{font-size:20px;margin:0 0 9px}.card p{color:#aeb5d1;line-height:1.5;font-size:14px;margin:0 0 18px;flex:1}
+button{border:0;border-radius:12px;padding:11px 14px;background:#fff;color:#151525;font-weight:700;cursor:pointer}button:hover{opacity:.88}
+.output{margin-top:18px;padding:18px 20px;border-radius:18px;background:#050812aa;border:1px solid #ffffff15;color:#dce1ff;min-height:58px;display:flex;align-items:center}
+footer{text-align:center;color:#747c9e;font-size:12px;margin-top:22px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}.card{min-height:150px}h1{letter-spacing:-2px}}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<span class="badge">AI LAB</span>
+<h1>AI Playground</h1>
+<p class="subtitle">작은 아이디어를 재미있는 도구로 바꿔보세요.</p>
+</header>
+<section class="grid">
+<div class="card"><div class="icon">✦</div><h2>아이디어 생성</h2><p>새로운 프로젝트나 웹페이지 아이디어가 필요할 때 사용해보세요.</p><button onclick="idea()">아이디어 받기</button></div>
+<div class="card"><div class="icon">⌘</div><h2>코드 팁</h2><p>HTML, CSS, JavaScript를 공부하면서 바로 써먹을 수 있는 팁입니다.</p><button onclick="codeTip()">팁 보기</button></div>
+<div class="card"><div class="icon">⚡</div><h2>랜덤 모드</h2><p>무엇을 만들지 모르겠다면 버튼 하나로 랜덤 주제를 골라보세요.</p><button onclick="randomMode()">랜덤 실행</button></div>
+</section>
+<div class="output" id="output">버튼을 눌러 결과를 확인하세요.</div>
+<footer>AI Playground · jium5064-art/ai</footer>
+</div>
+<script>
+const output=document.getElementById('output');
+const ideas=['나만의 비밀번호 생성기','미니 계산기','클릭커 게임','RGB 색상 생성기','온라인 메모장','랜덤 이름 생성기','간단한 음악 플레이어','웹 기반 타이머'];
+const tips=['CSS의 transition으로 부드러운 움직임을 만들 수 있어요.','querySelector()를 사용하면 원하는 HTML 요소를 쉽게 선택할 수 있어요.','localStorage를 사용하면 브라우저에 데이터를 저장할 수 있어요.','Flexbox는 요소를 가로와 세로로 정렬할 때 매우 편리해요.','addEventListener()로 버튼이나 키보드 이벤트를 처리할 수 있어요.'];
+function pick(arr){return arr[Math.floor(Math.random()*arr.length)]}
+function idea(){output.textContent='추천 아이디어: '+pick(ideas)}
+function codeTip(){output.textContent='코드 팁: '+pick(tips)}
+function randomMode(){const all=[...ideas,...tips];output.textContent='랜덤: '+pick(all)}
+</script>
+</body>
+</html>
